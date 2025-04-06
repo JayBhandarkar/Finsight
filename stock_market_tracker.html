@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Market Tracker - Finsight</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="finsight_styles.css">
+    <link rel="stylesheet" href="stock_market_tracker_styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Fin<span>sight</span></h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="finsight_home.html">Home</a></li>
+                <li><a href="finsight_home.html#features">Features</a></li>
+                <li><a href="finsight_home.html#projects">Projects</a></li>
+                <li><a href="finsight_home.html#about">About</a></li>
+                <li><a href="finsight_home.html#contact">Contact</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button class="login-btn">Login</button>
+                <button class="signup-btn">Sign In</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="project-hero">
+            <div class="project-hero-content fade-in">
+                <h1><i class="fas fa-chart-line"></i> Stock Market Tracker</h1>
+                <p class="project-description">Real-time stock market monitoring with predictive insights and personalized alerts for better investment decisions.</p>
+            </div>
+        </section>
+
+        <section class="stock-tracker-container">
+            <div class="instructions">
+                <h2 class="section-title">How to Use</h2>
+                <ol>
+                    <li><i class="fas fa-search"></i> Start typing a company name (e.g., "Apple" or "Microsoft")</li>
+                    <li><i class="fas fa-list"></i> Select a company from the suggestions</li>
+                    <li><i class="fas fa-plus-circle"></i> Click "Add Stock" or press Enter</li>
+                    <li><i class="fas fa-chart-line"></i> Track multiple stocks at once</li>
+                    <li><i class="fas fa-sync"></i> Prices update automatically every minute</li>
+                    <li><i class="fas fa-times-circle"></i> Click "Remove" to stop tracking a stock</li>
+                </ol>
+            </div>
+            <div class="search-container">
+                <div class="search-wrapper">
+                    <input type="text" id="stockInput" placeholder="Search for a company (e.g., Apple)">
+                    <div id="suggestions" class="suggestions-dropdown"></div>
+                </div>
+                <button id="addStock" class="add-stock-btn"><i class="fas fa-plus"></i> Add Stock</button>
+            </div>
+            
+            <div class="stocks-container" id="stocksList">
+                <!-- Stock cards will be added here dynamically -->
+            </div>
+        </section>
+
+        <section class="project-features">
+            <h2 class="section-title">Features of Stock Market Tracker</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fas fa-search-dollar"></i>
+                    <h3>Real-Time Tracking</h3>
+                    <p>Monitor stock prices with automatic updates every minute, ensuring you have access to the most current market data.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>Global Markets</h3>
+                    <p>Track stocks from various markets around the world, with support for multiple exchanges and currencies.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-pie"></i>
+                    <h3>Visual Indicators</h3>
+                    <p>Color-coded price changes and animations make it easy to identify market trends at a glance.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Secure Data</h3>
+                    <p>All market data is fetched securely using industry-standard APIs, ensuring reliability and accuracy.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Finsight</h3>
+                <p>Your financial insight platform</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="finsight_home.html">Home</a></li>
+                    <li><a href="finsight_home.html#features">Features</a></li>
+                    <li><a href="finsight_home.html#projects">Projects</a></li>
+                    <li><a href="finsight_home.html#about">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Finsight. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="finsight_scripts.js"></script>
+    <script src="stock_market_tracker_script.js"></script>
+</body>
+</html> 

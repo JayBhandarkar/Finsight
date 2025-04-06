@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Finsight</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .background-decoration {
+            position: absolute;
+            z-index: -1;
+        }
+        
+        .circle-1 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(to bottom right, #ff5e62, #ff9966);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            opacity: 0.6;
+            filter: blur(60px);
+        }
+        
+        .circle-2 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(to bottom right, #6c5ce7, #00cec9);
+            border-radius: 50%;
+            bottom: -80px;
+            left: -80px;
+            opacity: 0.5;
+            filter: blur(50px);
+        }
+        
+        .logo {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .logo h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .logo h1 span {
+            color: #00cec9;
+        }
+        
+        .login-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .login-header h2 {
+            color: #ffffff;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #6c5ce7;
+            box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.2);
+        }
+        
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .password-container {
+            position: relative;
+        }
+        
+        .password-toggle {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            font-size: 1rem;
+            background: none;
+            border: none;
+        }
+        
+        .password-toggle:hover {
+            color: #ffffff;
+        }
+        
+        .forgot-password {
+            display: block;
+            text-align: right;
+            color: #00cec9;
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .forgot-password:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+        
+        .sign-in-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #6c5ce7, #00cec9);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sign-in-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.2);
+        }
+        
+        .sign-in-btn:active {
+            transform: translateY(0);
+        }
+        
+        .sign-in-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.6s ease;
+        }
+        
+        .sign-in-btn:hover::before {
+            left: 100%;
+        }
+        
+        .signup-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        .signup-link a {
+            color: #00cec9;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .signup-link a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+        
+        .back-to-home {
+            margin-top: 2rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-home:hover {
+            color: #ffffff;
+        }
+        
+        .back-to-home i {
+            font-size: 0.8rem;
+        }
+        
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .remember-me input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .remember-me input[type="checkbox"]:checked {
+            background: linear-gradient(135deg, #6c5ce7, #00cec9);
+            border-color: transparent;
+        }
+        
+        .remember-me input[type="checkbox"]:checked::before {
+            content: "✓";
+            position: absolute;
+            color: white;
+            font-size: 12px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .remember-me label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .login-header h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-decoration circle-1"></div>
+    <div class="background-decoration circle-2"></div>
+    
+    <div class="logo">
+        <h1>Fin<span>sight</span></h1>
+    </div>
+    
+    <div class="login-card">
+        <div class="login-header">
+            <h2>Good to see you again</h2>
+        </div>
+        
+        <form id="login-form">
+            <div class="form-group">
+                <label for="email">Your email</label>
+                <input type="email" id="email" placeholder="e.g. elon@tesla.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Your password</label>
+                <div class="password-container">
+                    <input type="password" id="password" placeholder="e.g. ilovemangools123" required>
+                    <button type="button" class="password-toggle" id="password-toggle">
+                        <i class="far fa-eye"></i>
+                    </button>
+                </div>
+                <a href="#" class="forgot-password">Forgot password?</a>
+            </div>
+            
+            <div class="form-group remember-me">
+                <input type="checkbox" id="remember-me">
+                <label for="remember-me">Remember me</label>
+            </div>
+            
+            <button type="submit" class="sign-in-btn">Sign In</button>
+            
+            <div class="signup-link">
+                Don't have an account? <a href="finsight_signup.html">Create account</a>
+            </div>
+        </form>
+    </div>
+    
+    <a href="finsight_home.html" class="back-to-home">
+        <i class="fas fa-arrow-left"></i> Back to home
+    </a>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle password visibility
+            const passwordToggle = document.getElementById('password-toggle');
+            const passwordInput = document.getElementById('password');
+            const emailInput = document.getElementById('email');
+            const rememberMeCheckbox = document.getElementById('remember-me');
+            
+            // Load saved credentials if they exist
+            if (localStorage.getItem('finsight_remember_me') === 'true') {
+                emailInput.value = localStorage.getItem('finsight_email') || '';
+                passwordInput.value = localStorage.getItem('finsight_password') || '';
+                rememberMeCheckbox.checked = true;
+            }
+            
+            passwordToggle.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                
+                // Toggle icon
+                const icon = passwordToggle.querySelector('i');
+                icon.classList.toggle('fa-eye');
+                icon.classList.toggle('fa-eye-slash');
+            });
+            
+            // Handle form submission
+            const loginForm = document.getElementById('login-form');
+            
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const email = emailInput.value;
+                const password = passwordInput.value;
+                const rememberMe = rememberMeCheckbox.checked;
+                
+                // Extract user name from email (before the @ symbol)
+                const username = email.split('@')[0];
+                
+                // Save user information
+                localStorage.setItem('finsight_username', username);
+                localStorage.setItem('finsight_logged_in', 'true');
+                
+                // Save or remove credentials based on remember me checkbox
+                if (rememberMe) {
+                    localStorage.setItem('finsight_email', email);
+                    localStorage.setItem('finsight_password', password);
+                    localStorage.setItem('finsight_remember_me', 'true');
+                } else {
+                    localStorage.removeItem('finsight_email');
+                    localStorage.removeItem('finsight_password');
+                    localStorage.removeItem('finsight_remember_me');
+                }
+                
+                // Here you would normally handle authentication with a server
+                // For this example, we'll just redirect to the home page
+                setTimeout(() => {
+                    window.location.href = 'finsight_home.html';
+                }, 1000);
+                
+                // Show loading state on button
+                const button = document.querySelector('.sign-in-btn');
+                button.innerHTML = 'Signing in...';
+                button.disabled = true;
+                button.style.opacity = '0.8';
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,597 @@
+/* Stock Market Tracker styles integrated with Finsight theme */
+:root {
+    --stock-glow: rgba(37, 99, 235, 0.3);
+    --stock-border-glow: rgba(37, 99, 235, 0.2);
+    --stock-text-glow: rgba(255, 255, 255, 0.2);
+    --price-up-color: #27ae60;
+    --price-down-color: #e74c3c;
+    --price-up-glow: rgba(39, 174, 96, 0.3);
+    --price-down-glow: rgba(231, 76, 60, 0.3);
+}
+
+/* Project hero section */
+.project-hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    padding: 6rem 5%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0 0h100v100H0z" fill="%23192339" fill-opacity="0.05"/></svg>') repeat;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.project-hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.project-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    font-weight: 700;
+    text-shadow: 0 0 20px rgba(37, 99, 235, 0.4), 0 0 10px rgba(255, 255, 255, 0.3);
+    display: inline-block;
+    animation: heroGlow 4s infinite alternate;
+}
+
+@keyframes heroGlow {
+    0% {
+        text-shadow: 0 0 15px rgba(37, 99, 235, 0.3), 0 0 5px rgba(255, 255, 255, 0.2);
+    }
+    50% {
+        text-shadow: 0 0 25px rgba(37, 99, 235, 0.5), 0 0 15px rgba(255, 255, 255, 0.4);
+    }
+    100% {
+        text-shadow: 0 0 15px rgba(37, 99, 235, 0.3), 0 0 5px rgba(255, 255, 255, 0.2);
+    }
+}
+
+.project-hero h1 i {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+    text-shadow: 0 0 15px var(--primary-glow);
+}
+
+.project-description {
+    font-size: 1.25rem;
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--text-color);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    line-height: 1.8;
+}
+
+/* Stock tracker container */
+.stock-tracker-container {
+    padding: 4rem 5%;
+    background: var(--background);
+    position: relative;
+    overflow: hidden;
+}
+
+.stock-tracker-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.05) 0%, rgba(37, 99, 235, 0) 70%);
+    filter: blur(50px);
+    opacity: 0.4;
+    z-index: 0;
+    animation: trackerGlowPulse 8s infinite alternate;
+}
+
+@keyframes trackerGlowPulse {
+    0% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+    100% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+}
+
+/* Instructions section */
+.instructions {
+    background: rgba(30, 41, 59, 0.8);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 0 auto 2rem;
+    max-width: 800px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 20px var(--stock-glow);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    z-index: 1;
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.instructions::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(45deg, var(--primary-color), transparent, var(--primary-color), transparent);
+    border-radius: 20px;
+    z-index: -1;
+    opacity: 0.1;
+    animation: borderGlow 8s linear infinite;
+}
+
+@keyframes borderGlow {
+    0% {
+        opacity: 0.1;
+        transform: rotate(0deg);
+    }
+    100% {
+        opacity: 0.3;
+        transform: rotate(360deg);
+    }
+}
+
+.instructions h2 {
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 15px var(--primary-glow), 0 0 5px rgba(255, 255, 255, 0.3);
+    text-align: center;
+}
+
+.instructions ol {
+    padding-left: 2rem;
+    counter-reset: item;
+    list-style-type: none;
+}
+
+.instructions li {
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 0.5rem;
+    color: var(--text-secondary);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
+    animation: slideIn 0.5s ease-out backwards;
+}
+
+.instructions li:nth-child(1) { animation-delay: 0.1s; }
+.instructions li:nth-child(2) { animation-delay: 0.2s; }
+.instructions li:nth-child(3) { animation-delay: 0.3s; }
+.instructions li:nth-child(4) { animation-delay: 0.4s; }
+.instructions li:nth-child(5) { animation-delay: 0.5s; }
+.instructions li:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.instructions li:hover {
+    color: var(--text-color);
+    transform: translateX(5px);
+    text-shadow: 0 0 15px var(--primary-glow), 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.instructions li i {
+    color: var(--primary-color);
+    margin-right: 0.75rem;
+    text-shadow: 0 0 10px var(--primary-glow);
+}
+
+/* Search container */
+.search-container {
+    background: rgba(30, 41, 59, 0.8);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 0 auto 2rem;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 20px var(--stock-glow);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    z-index: 2;
+    animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+.search-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+#stockInput {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    outline: none;
+    font-size: 1rem;
+    background-color: rgba(15, 23, 42, 0.6);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#stockInput:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--stock-border-glow), 0 8px 16px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.suggestions-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: rgba(15, 23, 42, 0.95);
+    border-radius: 12px;
+    margin-top: 0.5rem;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 15px var(--stock-glow);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+}
+
+.suggestions-dropdown.show {
+    display: block;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.suggestion-item {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    color: var(--text-secondary);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}
+
+.suggestion-item:hover {
+    background-color: rgba(37, 99, 235, 0.1);
+    padding-left: 1.5rem;
+    color: var(--text-color);
+    text-shadow: 0 0 15px var(--stock-text-glow);
+}
+
+.suggestion-item .symbol {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-right: 0.75rem;
+    text-shadow: 0 0 10px var(--primary-glow);
+}
+
+.suggestion-item .name {
+    color: var(--text-secondary);
+}
+
+.suggestion-item .region {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-left: 0.5rem;
+}
+
+.suggestion-item.loading,
+.suggestion-item.error {
+    text-align: center;
+    cursor: default;
+    color: var(--text-secondary);
+    padding: 1rem;
+}
+
+.add-stock-btn {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 15px var(--stock-glow);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.add-stock-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), 0 0 20px var(--stock-glow);
+}
+
+.add-stock-btn i {
+    font-size: 0.9rem;
+}
+
+/* Stocks container */
+.stocks-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.stock-card {
+    background-color: rgba(30, 41, 59, 0.8);
+    border-radius: 15px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 0 15px var(--stock-glow);
+    border: 1px solid var(--border-color);
+    animation: cardFadeIn 0.5s ease-out backwards;
+}
+
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.stock-card::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(45deg, var(--primary-color), transparent, var(--primary-color), transparent);
+    border-radius: 20px;
+    z-index: -1;
+    opacity: 0.1;
+    animation: borderGlow 8s linear infinite;
+}
+
+.stock-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 0 25px var(--stock-glow);
+}
+
+.stock-card:hover::before {
+    opacity: 0.2;
+}
+
+.stock-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.stock-header h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-color);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.stock-symbol {
+    display: inline-block;
+    background-color: rgba(37, 99, 235, 0.1);
+    padding: 0.25rem 0.5rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    text-shadow: 0 0 8px var(--primary-glow);
+}
+
+.stock-price {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 1rem 0;
+    text-align: center;
+    transition: all 0.3s ease;
+    animation: priceChange 1s ease;
+    text-shadow: 0 0 15px var(--stock-text-glow);
+}
+
+@keyframes priceChange {
+    0% {
+        opacity: 0.8;
+        transform: scale(0.95);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.price-up {
+    color: var(--price-up-color);
+    text-shadow: 0 0 15px var(--price-up-glow), 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.price-down {
+    color: var(--price-down-color);
+    text-shadow: 0 0 15px var(--price-down-glow), 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.stock-detail {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.stock-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: 1rem;
+    padding-top: 1rem;
+}
+
+.remove-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6;
+}
+
+.remove-btn:hover {
+    color: var(--price-down-color);
+    background-color: rgba(231, 76, 60, 0.1);
+    transform: rotate(90deg);
+    opacity: 1;
+}
+
+/* Notification */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    background-color: rgba(30, 41, 59, 0.9);
+    color: var(--text-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 0 10px var(--stock-glow);
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: notificationFadeIn 0.3s forwards;
+    border-left: 4px solid var(--primary-color);
+    backdrop-filter: blur(10px);
+}
+
+@keyframes notificationFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.notification.success {
+    border-left-color: var(--price-up-color);
+}
+
+.notification.error {
+    border-left-color: var(--price-down-color);
+}
+
+/* Scrollbar styling */
+.suggestions-dropdown::-webkit-scrollbar {
+    width: 8px;
+}
+
+.suggestions-dropdown::-webkit-scrollbar-track {
+    background: rgba(30, 41, 59, 0.5);
+    border-radius: 10px;
+}
+
+.suggestions-dropdown::-webkit-scrollbar-thumb {
+    background: rgba(59, 130, 246, 0.5);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.suggestions-dropdown::-webkit-scrollbar-thumb:hover {
+    background: rgba(59, 130, 246, 0.7);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .project-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .project-description {
+        font-size: 1rem;
+    }
+    
+    .instructions,
+    .search-container {
+        padding: 1.5rem;
+    }
+    
+    .stocks-container {
+        grid-template-columns: 1fr;
+    }
+} 

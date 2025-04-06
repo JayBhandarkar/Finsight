@@ -1,0 +1,719 @@
+/* Expense Tracker Styles */
+@import url('finsight_styles.css');
+
+:root {
+    --expense-primary: #6c5ce7;
+    --expense-secondary: #00cec9;
+    --expense-glow: rgba(108, 92, 231, 0.6);
+    --expense-up: #00b894;
+    --expense-down: #d63031;
+    --income-color: #00b894;
+    --expense-color: #d63031;
+}
+
+/* Calendar Styles */
+.calendar-container {
+    background: rgba(18, 18, 30, 0.7);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 20px var(--expense-glow), inset 0 0 10px rgba(108, 92, 231, 0.2);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.calendar-month-year {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-shadow: 0 0 8px var(--expense-glow);
+}
+
+.calendar-nav-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.calendar-nav-btn:hover {
+    background: rgba(108, 92, 231, 0.2);
+    box-shadow: 0 0 12px var(--expense-glow);
+}
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.weekdays div {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.calendar-day {
+    position: relative;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(30, 30, 45, 0.6);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.calendar-day .day-number {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.calendar-day .expense-marker {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--expense-color);
+    box-shadow: 0 0 8px var(--expense-down);
+}
+
+.calendar-day .income-marker {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--income-color);
+    box-shadow: 0 0 8px var(--expense-up);
+}
+
+.calendar-day:hover {
+    background: rgba(108, 92, 231, 0.2);
+    box-shadow: 0 0 15px var(--expense-glow);
+    transform: translateY(-2px);
+}
+
+.current-day {
+    background: rgba(108, 92, 231, 0.3) !important;
+    border: 1px solid rgba(108, 92, 231, 0.5) !important;
+    box-shadow: 0 0 10px var(--expense-glow) !important;
+}
+
+/* Transaction Type Toggle */
+.transaction-type-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem;
+    background: rgba(30, 30, 45, 0.5);
+    border-radius: 8px;
+}
+
+.transaction-type-toggle span {
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0 1rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Toggle Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 28px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(108, 92, 231, 0.2);
+    transition: 0.4s;
+    border: 1px solid rgba(108, 92, 231, 0.4);
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 3px;
+    background-color: var(--expense-down);
+    transition: 0.4s;
+    box-shadow: 0 0 8px var(--expense-down);
+}
+
+input:checked + .slider {
+    background-color: rgba(0, 184, 148, 0.2);
+    border: 1px solid rgba(0, 184, 148, 0.4);
+}
+
+input:checked + .slider:before {
+    transform: translateX(32px);
+    background-color: var(--expense-up);
+    box-shadow: 0 0 8px var(--expense-up);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Enhanced Calendar Day Preview Popup */
+.expense-day-preview {
+    position: absolute;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(18, 18, 30, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 10px;
+    min-width: 180px;
+    box-shadow: 0 0 15px var(--expense-glow);
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+}
+
+.expense-day-preview .preview-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.expense-day-preview .preview-total {
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+}
+
+.expense-day-preview .preview-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 4px;
+    font-size: 0.75rem;
+}
+
+.expense-day-preview .income {
+    color: var(--income-color);
+}
+
+.expense-day-preview .expense {
+    color: var(--expense-color);
+}
+
+.calendar-day:hover .expense-day-preview {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Chart Tooltip Enhancement */
+.chart-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    z-index: 10;
+    white-space: nowrap;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    max-width: 200px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Expense Form Styles */
+.expense-form-container {
+    background: rgba(18, 18, 30, 0.7);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 20px var(--expense-glow), inset 0 0 10px rgba(108, 92, 231, 0.2);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.expense-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.expense-form .form-group {
+    position: relative;
+}
+
+.expense-form .form-group:last-child {
+    grid-column: span 2;
+}
+
+.expense-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.expense-form input,
+.expense-form select,
+.expense-form textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background: rgba(30, 30, 45, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.expense-form input:focus,
+.expense-form select:focus,
+.expense-form textarea:focus {
+    outline: none;
+    border-color: var(--expense-primary);
+    box-shadow: 0 0 10px var(--expense-glow);
+}
+
+.expense-form input[type="number"] {
+    text-align: right;
+}
+
+.expense-form button {
+    background: linear-gradient(135deg, var(--expense-primary), var(--expense-secondary));
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px var(--expense-glow);
+}
+
+.expense-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px var(--expense-glow);
+}
+
+/* Expense Summary Styles */
+.expense-summary-container {
+    background: rgba(18, 18, 30, 0.7);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 20px var(--expense-glow), inset 0 0 10px rgba(108, 92, 231, 0.2);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.summary-card {
+    background: rgba(30, 30, 45, 0.6);
+    border-radius: 10px;
+    padding: 1.2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.summary-card:hover {
+    box-shadow: 0 0 15px var(--expense-glow);
+    transform: translateY(-2px);
+}
+
+.summary-card h4 {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.summary-card .summary-amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-shadow: 0 0 10px var(--expense-glow);
+}
+
+.summary-card.total-income .summary-amount {
+    color: var(--income-color);
+    text-shadow: 0 0 10px var(--expense-up);
+}
+
+.summary-card.total-expenses .summary-amount {
+    color: var(--expense-color);
+    text-shadow: 0 0 10px var(--expense-down);
+}
+
+.category-breakdown {
+    background: rgba(30, 30, 45, 0.6);
+    border-radius: 10px;
+    padding: 1.2rem;
+}
+
+.category-chart {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    border-radius: 8px;
+    overflow: hidden;
+    display: none;
+}
+
+.category-chart.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+    z-index: 5;
+}
+
+.category-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.category-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.category-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.category-name {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.category-amount {
+    margin-left: auto;
+    font-weight: 600;
+}
+
+/* Project Hero Section */
+.project-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 4rem 0;
+    background: linear-gradient(135deg, rgba(18, 18, 30, 0.9), rgba(30, 30, 60, 0.9));
+}
+
+.project-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, var(--expense-glow) 0%, transparent 20%),
+        radial-gradient(circle at 80% 70%, var(--expense-secondary) 0%, transparent 20%);
+    opacity: 0.4;
+    z-index: -1;
+}
+
+.project-hero-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #fff, var(--expense-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 15px var(--expense-glow);
+}
+
+.project-hero-content p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+/* Expense Tracker Container */
+.expense-tracker-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.expense-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+@media (min-width: 992px) {
+    .expense-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .expense-summary-section {
+        grid-column: span 2;
+    }
+}
+
+.calendar-section,
+.expense-form-section,
+.expense-summary-section {
+    width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .summary-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .expense-form {
+        grid-template-columns: 1fr;
+    }
+    
+    .expense-form .form-group:last-child {
+        grid-column: span 1;
+    }
+    
+    .category-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Glow Effects for Text */
+.expense-tracker-section h2,
+.expense-form-container h3,
+.expense-summary-container h3 {
+    text-shadow: 0 0 10px var(--expense-glow);
+    margin-bottom: 1.5rem;
+}
+
+p {
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.15);
+}
+
+/* Animations */
+@keyframes glow-pulse {
+    0% {
+        box-shadow: 0 0 10px var(--expense-glow);
+    }
+    50% {
+        box-shadow: 0 0 20px var(--expense-glow);
+    }
+    100% {
+        box-shadow: 0 0 10px var(--expense-glow);
+    }
+}
+
+.calendar-container,
+.expense-form-container,
+.expense-summary-container {
+    animation: glow-pulse 4s infinite ease-in-out;
+}
+
+.features-section .feature-card:hover {
+    box-shadow: 0 0 25px var(--expense-glow);
+}
+
+/* Feature Cards Styling */
+.features-section .feature-card {
+    transition: all 0.4s ease;
+}
+
+.features-section .feature-card:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+
+.features-section .feature-card i {
+    color: var(--expense-primary);
+    text-shadow: 0 0 10px var(--expense-glow);
+}
+
+/* Chart Tabs */
+.chart-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chart-tab {
+    background: rgba(30, 30, 45, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.chart-tab:hover {
+    background: rgba(108, 92, 231, 0.2);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.chart-tab.active {
+    background: rgba(108, 92, 231, 0.3);
+    border-color: rgba(108, 92, 231, 0.5);
+    color: white;
+    box-shadow: 0 0 10px var(--expense-glow);
+}
+
+.chart-container {
+    position: relative;
+    height: 200px;
+    margin-bottom: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Bar Chart Styles */
+.bar-container {
+    display: flex;
+    height: 100%;
+    align-items: flex-end;
+    justify-content: space-around;
+    padding: 0 10px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.bar-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    max-width: 60px;
+    height: 100%;
+}
+
+.bar {
+    width: 100%;
+    background: linear-gradient(to top, rgba(108, 92, 231, 0.7), rgba(108, 92, 231, 0.3));
+    border-radius: 6px 6px 0 0;
+    position: relative;
+    transition: all 0.3s ease;
+    max-width: 40px;
+    min-height: 5px; /* Ensure minimum height for visibility */
+}
+
+.expenses-chart .bar {
+    background: linear-gradient(to top, rgba(214, 48, 49, 0.7), rgba(214, 48, 49, 0.3));
+    box-shadow: 0 0 10px rgba(214, 48, 49, 0.4);
+}
+
+.income-chart .bar {
+    background: linear-gradient(to top, rgba(0, 184, 148, 0.7), rgba(0, 184, 148, 0.3));
+    box-shadow: 0 0 10px rgba(0, 184, 148, 0.4);
+}
+
+.bar:hover {
+    filter: brightness(1.2);
+    box-shadow: 0 0 15px var(--expense-glow);
+}
+
+.expenses-chart .bar:hover {
+    box-shadow: 0 0 15px rgba(214, 48, 49, 0.6);
+}
+
+.income-chart .bar:hover {
+    box-shadow: 0 0 15px rgba(0, 184, 148, 0.6);
+}
+
+.bar-label {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 5px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.bar-value {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    white-space: nowrap;
+}
+
+.bar:hover .bar-value {
+    opacity: 1;
+} 

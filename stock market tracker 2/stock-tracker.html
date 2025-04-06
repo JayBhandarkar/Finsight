@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Market Tracker</title>
+    <link rel="stylesheet" href="stock-tracker.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-chart-line"></i> Stock Market Tracker</h1>
+            <div class="instructions">
+                <h2>How to Use</h2>
+                <ol>
+                    <li>Start typing a company name (e.g., "Apple" or "Microsoft")</li>
+                    <li>Select a company from the suggestions</li>
+                    <li>Click "Add Stock" or press Enter</li>
+                    <li>Track multiple stocks at once</li>
+                    <li>Prices update automatically every minute</li>
+                    <li>Click "Remove" to stop tracking a stock</li>
+                </ol>
+            </div>
+            <div class="search-container">
+                <div class="search-wrapper">
+                    <input type="text" id="stockInput" placeholder="Search for a company (e.g., Apple)">
+                    <div id="suggestions" class="suggestions-dropdown"></div>
+                </div>
+                <button id="addStock"><i class="fas fa-plus"></i> Add Stock</button>
+            </div>
+        </header>
+        
+        <main>
+            <div class="stocks-container" id="stocksList">
+                <!-- Stock cards will be added here dynamically -->
+            </div>
+        </main>
+    </div>
+    <script src="stock-tracker.js"></script>
+</body>
+</html> 

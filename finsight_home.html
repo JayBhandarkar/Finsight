@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finsight - Your Financial Insight Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="finsight_styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Fin<span>sight</span></h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features" class="active">Features</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <div id="logged-out-view">
+                    <a href="finsight_login.html" class="login-btn">Login</a>
+                    <a href="finsight_signup.html" class="signup-btn">Sign Up</a>
+                </div>
+                <div id="logged-in-view" style="display: none;">
+                    <div class="user-profile">
+                        <span id="username-display"></span>
+                        <div class="user-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <button id="logout-btn" class="logout-btn">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content fade-in">
+                <h1>Revolutionizing Financial Management</h1>
+                <p>Finsight combines AI-powered analysis with human insights to transform your financial decision-making process, reducing time-to-plan by 70% while improving financial outcomes.</p>
+                <button class="cta-button" id="get-started-btn">Get Started</button>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <h2 class="section-title">Our Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Financial Analytics</h3>
+                    <p>Our advanced analytics models extract and understand complex information from financial data, going beyond simple keyword matching.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Secure Platform</h3>
+                    <p>Proprietary scoring system that weights technical requirements, experience, and potential to deliver optimal financial security.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-sync"></i>
+                    <h3>Real-time Updates</h3>
+                    <p>Real-time evaluation of market changes, providing insights on investment opportunities and financial strategies.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects">
+            <h2 class="section-title">Our Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>CA Chatbot</h3>
+                    <p>Intelligent chatbot assistant for financial advice and tax-related queries with instant responses</p>
+                    <a href="ca_chatbot.html" class="project-btn">Try Now</a>
+                </div>
+                <div class="project-card">
+                    <i class="fas fa-wallet"></i>
+                    <h3>Expense Tracker</h3>
+                    <p>Intuitive expense tracking tool with AI-powered categorization and budget management features</p>
+                    <a href="expense_tracker.html" class="project-btn">Try Now</a>
+                </div>
+                <div class="project-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Stock Market Tracker</h3>
+                    <p>Real-time stock market monitoring with predictive insights and personalized alerts</p>
+                    <a href="stock_market_tracker.html" class="project-btn">Try Now</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <h2 class="section-title">About Finsight</h2>
+            <div class="about-container">
+                <div class="about-content">
+                    <p class="about-tagline"><span class="highlight-text">Revolutionizing Financial Management</span> through technology and innovation.</p>
+                    <p class="about-description">Finsight is a comprehensive <span class="highlight-text">Financial</span> platform that combines three powerful mini-projects to provide you with complete financial insights and tools for better decision-making. Our mission is to make <span class="highlight-text">Financial Management</span> accessible and intuitive for everyone, leveraging advanced technology to deliver personalized financial solutions.</p>
+                    <p class="about-features">Through our integrated approach, we empower users to:</p>
+                    <ul class="about-feature-list">
+                        <li><i class="fas fa-check-circle"></i> Make informed investment decisions</li>
+                        <li><i class="fas fa-check-circle"></i> Track expenses with AI-powered insights</li>
+                        <li><i class="fas fa-check-circle"></i> Monitor market trends in real-time</li>
+                        <li><i class="fas fa-check-circle"></i> Get expert financial advice through our chatbot</li>
+                    </ul>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-box">
+                        <span class="stat-number">70%</span>
+                        <span class="stat-text">Reduced Time</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-text">Support</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">15K+</span>
+                        <span class="stat-text">Active Users</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2 class="section-title">Contact Us</h2>
+            <form id="contact-form">
+                <input type="text" placeholder="Name" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Finsight</h3>
+                <p>Your financial insight platform</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Finsight. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="finsight_scripts.js"></script>
+</body>
+</html> 
